@@ -392,6 +392,41 @@ interface DatabaseDao {
   ): Flow<List<Song>>
 
   @Transaction
+  @RewriteQueriesToDropUnusedColumns
+  @Query(
+    """
+        SELECT song.*,
+               (SELECT COUNT(1)
+                FROM event
+                WHERE songId = song.id
+                  AND timestamp > :fromTimeStamp AND timestamp <= :toTimeStamp) AS songCountListened,
+               (SELECT SUM(event.playTime)
+                FROM event
+                WHERE songId = song.id
+                  AND timestamp > :fromTimeStamp AND timestamp <= :toTimeStamp) AS timeListened
+        FROM song
+        JOIN (SELECT event.songId AS songId
+                     FROM event
+                     JOIN song AS visible_song ON visible_song.id = event.songId
+                     WHERE event.timestamp > :fromTimeStamp
+                     AND event.timestamp <= :toTimeStamp
+                     AND visible_song.hideFromQuickPicks = 0
+                     GROUP BY songId
+                     ORDER BY SUM(playTime) ASC
+                     LIMIT :limit)
+        ON song.id = songId
+        LIMIT :limit
+        OFFSET :offset
+    """,
+  )
+  fun leastPlayedSongs(
+    fromTimeStamp: Long,
+    limit: Int = 6,
+    offset: Int = 0,
+    toTimeStamp: Long? = LocalDateTime.now().toInstant(ZoneOffset.UTC).toEpochMilli(),
+  ): Flow<List<Song>>
+
+  @Transaction
   @SuppressWarnings(RoomWarnings.QUERY_MISMATCH)
   @Query(
     """
