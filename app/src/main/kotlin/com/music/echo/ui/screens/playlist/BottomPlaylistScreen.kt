@@ -707,15 +707,14 @@ private fun BottomPlaylistHeader(
 
       Column(modifier = Modifier.fillMaxWidth()) {
         Text(
-          text = stringResource(R.string.about_album),
+          text = stringResource(R.string.about_playlist),
           style = MaterialTheme.typography.titleMedium,
           fontWeight = FontWeight.Bold,
           color = MaterialTheme.colorScheme.onSurface,
           modifier = Modifier.padding(bottom = 8.dp)
         )
         ExpandableText(
-          text =
-            "$name is a playlist featuring your ${songs.size} least played tracks. Keep listening to discover how your bottom songs evolve over time.",
+          text = stringResource(R.string.bottom_playlist_description, name, songs.size),
           collapsedMaxLines = 3
         )
       }

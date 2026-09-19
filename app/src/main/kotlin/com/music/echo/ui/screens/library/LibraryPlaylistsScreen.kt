@@ -297,7 +297,7 @@ fun LibraryPlaylistsScreen(
                   icon = R.drawable.trending_up,
                   iconTint = androidx.compose.material3.MaterialTheme.colorScheme.onSurface,
                   onClick = { navController.navigate("top_playlist/$topSize") },
-                  modifier = Modifier.fillMaxWidth(0.5f).padding(end = 4.dp)
+                  modifier = itemModifier
                 )
               }
 
@@ -307,7 +307,7 @@ fun LibraryPlaylistsScreen(
                   icon = R.drawable.trending_down,
                   iconTint = androidx.compose.material3.MaterialTheme.colorScheme.onSurface,
                   onClick = { navController.navigate("bottom_playlist/50") },
-                  modifier = Modifier.fillMaxWidth(0.5f).padding(end = 4.dp)
+                  modifier = itemModifier
                 )
               }
             }
@@ -427,7 +427,7 @@ fun LibraryPlaylistsScreen(
                   icon = R.drawable.trending_up,
                   iconTint = androidx.compose.material3.MaterialTheme.colorScheme.onSurface,
                   onClick = { navController.navigate("top_playlist/$topSize") },
-                  modifier = Modifier.fillMaxWidth(0.5f).padding(end = 4.dp)
+                  modifier = itemModifier
                 )
               }
 
@@ -437,7 +437,7 @@ fun LibraryPlaylistsScreen(
                   icon = R.drawable.trending_down,
                   iconTint = androidx.compose.material3.MaterialTheme.colorScheme.onSurface,
                   onClick = { navController.navigate("bottom_playlist/50") },
-                  modifier = Modifier.fillMaxWidth(0.5f).padding(end = 4.dp)
+                  modifier = itemModifier
                 )
               }
             }

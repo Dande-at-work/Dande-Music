@@ -49,9 +49,11 @@ constructor(
         period to hideVideoSongs
       }
       .flatMapLatest { (period, hideVideoSongs) ->
-        database.leastPlayedSongs(period.toTimeMillis(), bottom.toInt()).map { songs ->
-          if (hideVideoSongs) songs.filter { !it.song.isVideo } else songs
-        }
+        database.leastPlayedSongs(
+          period.toTimeMillis(),
+          bottom.toInt(),
+          hideVideoSongs = hideVideoSongs
+        )
       }
       .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 }
