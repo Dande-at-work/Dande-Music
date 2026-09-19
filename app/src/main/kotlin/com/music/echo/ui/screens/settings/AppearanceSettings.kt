@@ -89,9 +89,9 @@ import echo.music.iad1tya.constants.PlayerButtonsStyle
 import echo.music.iad1tya.constants.PlayerButtonsStyleKey
 import echo.music.iad1tya.constants.RotatingThumbnailKey
 import echo.music.iad1tya.constants.SelectedThemeColorKey
+import echo.music.iad1tya.constants.ShowBottomPlaylistKey
 import echo.music.iad1tya.constants.ShowCachedPlaylistKey
 import echo.music.iad1tya.constants.ShowCommentButtonKey
-import echo.music.iad1tya.constants.ShowBottomPlaylistKey
 import echo.music.iad1tya.constants.ShowDownloadedPlaylistKey
 import echo.music.iad1tya.constants.ShowExportedPlaylistKey
 import echo.music.iad1tya.constants.ShowLikedPlaylistKey
