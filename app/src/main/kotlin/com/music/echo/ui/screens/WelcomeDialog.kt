@@ -57,69 +57,33 @@ fun WelcomeDialog(onDismissRequest: () -> Unit) {
         // Main Header
         WelcomeAppCard()
 
-        WelcomeSectionCard(title = "Follow Developer") {
+        WelcomeSectionCard(title = "Social Links") {
           WelcomeActionRow(
-            icon = painterResource(R.drawable.ic_instagram_new),
-            title = "Instagram",
-            subtitle = "@iad1tya",
-            onClick = { uriHandler.openUri("https://instagram.com/iad1tya") }
+            icon = painterResource(R.drawable.github),
+            title = "GitHub",
+            subtitle = "Dande-at-work/Dande-Music",
+            onClick = { uriHandler.openUri("https://github.com/Dande-at-work/Dande-Music") }
           )
           WelcomeDivider()
           WelcomeActionRow(
             icon = painterResource(R.drawable.ic_x_new),
             title = "X (Twitter)",
-            subtitle = "@xad1tya",
-            onClick = { uriHandler.openUri("https://x.com/xad1tya") }
+            subtitle = "@your_username",
+            onClick = { uriHandler.openUri("https://x.com/your_username") }
           )
           WelcomeDivider()
           WelcomeActionRow(
-            icon = painterResource(R.drawable.github),
-            title = "GitHub",
-            subtitle = "iad1tya",
-            onClick = { uriHandler.openUri("https://github.com/iad1tya") }
-          )
-        }
-
-        WelcomeSectionCard(title = "Support Echo") {
-          WelcomeActionRow(
-            icon = painterResource(R.drawable.coffee),
-            title = "Buy Me a Coffee",
-            subtitle = "buymeacoffee.com/iad1tya",
-            onClick = { uriHandler.openUri("https://buymeacoffee.com/iad1tya") }
-          )
-          WelcomeDivider()
-          WelcomeActionRow(
-            icon = painterResource(R.drawable.ic_patreon_new),
-            title = "Patreon",
-            subtitle = "patreon.com/cw/iad1tya",
-            onClick = { uriHandler.openUri("https://www.patreon.com/cw/iad1tya") }
-          )
-          WelcomeDivider()
-          WelcomeActionRow(
-            icon = painterResource(R.drawable.upi_new),
-            title = "UPI",
-            subtitle = "iad1tya@upi",
-            onClick = {
-              uriHandler.openUri(
-                "https://intradeus.github.io/http-protocol-redirector/?r=upi://pay?pa=iad1tya@upi&pn=Aditya%20Yadav&am=&tn=Thank%20You%20so%20much%20for%20this%20support"
-              )
-            }
-          )
-        }
-
-        WelcomeSectionCard(title = "Community") {
-          WelcomeActionRow(
-            icon = painterResource(R.drawable.ic_discord_new),
-            title = "Discord",
-            subtitle = "discord.gg/Xt5hgsJJuA",
-            onClick = { uriHandler.openUri("https://discord.gg/Xt5hgsJJuA") }
+            icon = painterResource(R.drawable.ic_instagram_new),
+            title = "Instagram",
+            subtitle = "@your_username",
+            onClick = { uriHandler.openUri("https://instagram.com/your_username") }
           )
         }
 
         Spacer(modifier = Modifier.height(4.dp))
 
         Button(
-          onClick = { uriHandler.openUri("https://github.com/EchoMusicApp/Echo-Music") },
+          onClick = { uriHandler.openUri("https://github.com/Dande-at-work/Dande-Music") },
           modifier = Modifier.fillMaxWidth().height(50.dp),
           shape = RoundedCornerShape(16.dp),
           colors =
@@ -181,7 +145,7 @@ private fun WelcomeAppCard() {
       )
       Spacer(Modifier.height(4.dp))
       Text(
-        text = "Echo Music",
+        text = "Dande Music",
         style = MaterialTheme.typography.titleLarge,
         fontWeight = FontWeight.Bold,
         color = MaterialTheme.colorScheme.onSurface,

@@ -126,7 +126,7 @@
                 <data android:host="listen" />
             </intent-filter>
 
-            <!-- Echo Music Share Links -->
+            <!-- Dande Music Share Links -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
