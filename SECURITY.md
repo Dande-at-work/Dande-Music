@@ -21,7 +21,7 @@ We release patches for security vulnerabilities in the following versions:
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in Echo Music, please report it responsibly:
+If you discover a security vulnerability in Dande Music, please report it responsibly:
 
 1. **Do NOT** create a public GitHub issue
 2. Email us at: [security@echomusic.fun](mailto:security@echomusic.fun)
@@ -58,7 +58,7 @@ The following files contain sensitive information and should never be committed:
 
 ## Data Privacy
 
-Echo Music is committed to user privacy:
+Dande Music is committed to user privacy:
 
 - **No personal data collection**: We don't collect personal information
 - **Local storage**: User data is stored locally on the device
@@ -76,4 +76,4 @@ For security-related questions or to report vulnerabilities:
 - Email: [security@echomusic.fun](mailto:security@echomusic.fun)
 - GitHub: Create a private security advisory
 
-Thank you for helping keep Echo Music secure!
+Thank you for helping keep Dande Music secure!

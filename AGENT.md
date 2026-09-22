@@ -1,4 +1,4 @@
-# AGENT.md - Echo Music
+# AGENT.md - Dande Music
 
 Context file for AI agents (Antigravity, Claude Code, etc.) working in this repo.
 Keep this file up to date as the project evolves — it's the fastest way to give
@@ -73,7 +73,7 @@ All UI work — new screens, new components, and edits to existing ones —
 applying standard Material Design 3 guidelines or Material You.
 
 We maintain a dedicated **[DESIGN.md](DESIGN.md)** file which serves as the central
-hub for all design decisions, component usage, and style choices in the Echo Music codebase.
+hub for all design decisions, component usage, and style choices in the Dande Music codebase.
 
 **Key Requirements:**
 - **Clean and Minimal:** Emphasize the Nothing OS 5.0 aesthetic. Focus on high-contrast, typography-driven layouts, monochrome or minimal color palettes, and distinct geometry.
@@ -104,7 +104,7 @@ If a new feature needs a UI pattern not covered in `DESIGN.md`, create a minimal
 
 ## What this app is
 
-Echo Music is a native **Android** music streaming client (Kotlin + Jetpack
+Dande Music is a native **Android** music streaming client (Kotlin + Jetpack
 Compose) that streams from YouTube Music's catalog ad-free, and layers on
 offline downloads, real-time synced lyrics, music recognition ("Echo Find"),
 podcasts, local media playback, Spotify import, "Listen Together" (synced

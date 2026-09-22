@@ -1,6 +1,6 @@
 # Setup Instructions
 
-This document provides instructions for setting up the Echo Music project for development.
+This document provides instructions for setting up the Dande Music project for development.
 
 ## Prerequisites
 
@@ -14,8 +14,8 @@ This document provides instructions for setting up the Echo Music project for de
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/iad1tya/Echo-Music.git
-cd Echo-Music
+git clone https://github.com/Dande-at-work/Dande-Music.git
+cd Dande-Music
 ```
 
 ### 2. Configure Local Properties
@@ -74,7 +74,7 @@ KEY_PASSWORD=your_key_password
 
 Open the project in Android Studio or build from the command line.
 
-Echo Music now ships a single **GMS** build variant (with Google Cast support). The previous FOSS (no Google Play Services) variant has been removed.
+Dande Music now ships a single **GMS** build variant (with Google Cast support). The previous FOSS (no Google Play Services) variant has been removed.
 
 ```bash
 # Debug build
@@ -88,7 +88,7 @@ Echo Music now ships a single **GMS** build variant (with Google Cast support). 
 
 ### 6. Configure AI Translation (Optional)
 
-Echo Music supports AI-powered lyrics translation. You can configure this in **Settings -> AI Settings**.
+Dande Music supports AI-powered lyrics translation. You can configure this in **Settings -> AI Settings**.
 
 #### Option A: Using OpenRouter (Default)
 

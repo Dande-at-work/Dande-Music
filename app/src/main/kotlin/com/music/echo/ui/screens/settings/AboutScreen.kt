@@ -190,32 +190,6 @@ fun AboutScreen(
             )
         )
       }
-
-      /* item {
-          AboutSectionCard(title = "App") {
-              AboutActionRow(
-                  icon = painterResource(R.drawable.github),
-                  title = "GitHub",
-                  subtitle = "EchoMusicApp/Echo-Music",
-                  onClick = { uriHandler.openUri("https://github.com/EchoMusicApp/Echo-Music") },
-              )
-              AboutDivider()
-              AboutActionRow(
-                  icon = painterResource(R.drawable.ic_discord_new),
-                  title = "Discord",
-                  subtitle = "discord.gg/EcfV3AxH5c",
-                  onClick = { uriHandler.openUri("https://discord.gg/EcfV3AxH5c") },
-              )
-              AboutDivider()
-              AboutActionRow(
-                  icon = painterResource(R.drawable.ic_telegram_new),
-                  title = "Telegram",
-                  subtitle = "t.me/EchoMusicApp",
-                  onClick = { uriHandler.openUri("https://t.me/EchoMusicApp") },
-              )
-          }
-      } */
-
     }
   }
 }

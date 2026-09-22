@@ -1,9 +1,9 @@
-# Echo Music Releases
+# Dande Music Releases
 
-This document tracks all available releases for Echo Music. 
+This document tracks all available releases for Dande Music. 
 
 ## [v1.2.2] - 2026-08-28 (Latest)
-[Download on GitHub](https://github.com/EchoMusicApp/Echo-Music/releases/tag/v1.2.2)
+[Download on GitHub](https://github.com/Dande-at-work/Dande-Music/releases/tag/v1.2.2)
 
 **Bug Fixes**
 - Fixed a crash that occurred when adding a song to a playlist, album, or artist before it was fully loaded.
@@ -18,9 +18,9 @@ This document tracks all available releases for Echo Music.
 - Updated select app components to their latest stable versions for improved reliability.
 
 ## [v1.2.1] - 2026-08-28
-[Download on GitHub](https://github.com/EchoMusicApp/Echo-Music/releases/tag/v1.2.1)
+[Download on GitHub](https://github.com/Dande-at-work/Dande-Music/releases/tag/v1.2.1)
 
-I am pleased to announce the initial release of the updated Echo Music repository.
+I am pleased to announce the initial release of the updated Dande Music repository.
 
 Recently, the project was subjected to a legal takedown notice. Since then, I have taken all necessary actions and made the required adjustments to the codebase and documentation to ensure full legal compliance. 
 
