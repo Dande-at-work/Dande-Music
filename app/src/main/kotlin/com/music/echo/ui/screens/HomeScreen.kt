@@ -129,6 +129,7 @@ import echo.music.iad1tya.ui.component.AlbumGridItem
 import echo.music.iad1tya.ui.component.ArtistGridItem
 import echo.music.iad1tya.ui.component.ChipsRow
 import echo.music.iad1tya.ui.component.DynamicHomeBanner
+import echo.music.iad1tya.ui.component.HomeGreeting
 import echo.music.iad1tya.ui.component.LocalBottomSheetPageState
 import echo.music.iad1tya.ui.component.rememberDynamicHomeBannerState
 import echo.music.iad1tya.ui.component.LocalMenuState
@@ -915,16 +916,6 @@ fun HomeScreen(
         state = lazylistState,
         contentPadding = LocalPlayerAwareWindowInsets.current.asPaddingValues()
       ) {
-        if (bannerState.isVisible) {
-          item(key = "home_top_banner") {
-            DynamicHomeBanner(
-              title = bannerState.title,
-              description = bannerState.description,
-              modifier = Modifier.animateItem()
-            )
-          }
-        }
-
         item {
           ChipsRow(
             chips =
@@ -958,6 +949,21 @@ fun HomeScreen(
                 }
               }
             }
+          }
+        }
+
+        item(key = "home_greeting") {
+          HomeGreeting(
+            modifier = Modifier.animateItem()
+          )
+        }
+
+        if (bannerState.isVisible) {
+          item(key = "home_top_banner") {
+            DynamicHomeBanner(
+              state = bannerState,
+              modifier = Modifier.animateItem()
+            )
           }
         }
 
