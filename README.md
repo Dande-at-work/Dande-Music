@@ -288,7 +288,7 @@ We do not host, upload, distribute, or store any audio, video, or copyrighted me
 
 The software is provided "AS IS", without warranty of any kind. The developers of Dande Music do not encourage or condone piracy. Users are solely responsible for ensuring their usage of this app complies with their local copyright laws and the Terms of Service of the platforms they access.
 
-Because we do not host any media files, we cannot process DMCA takedown requests for audio or video content. However, if you represent a copyright holder or have legal concerns regarding the open-source code itself, please contact us via email at: [hello@echomusic.fun](mailto:hello@echomusic.fun)
+Because we do not host any media files, we cannot process DMCA takedown requests for audio or video content. However, if you represent a copyright holder or have legal concerns regarding the open-source code itself, please contact us via email at: [https://github.com/Dande-at-work/Dande-Music/issues](mailto:https://github.com/Dande-at-work/Dande-Music/issues)
 
 ---
 

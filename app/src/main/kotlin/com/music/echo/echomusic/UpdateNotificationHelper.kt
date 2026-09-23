@@ -31,7 +31,7 @@ object UpdateNotificationHelper {
       nm.createNotificationChannel(channel)
     }
 
-    val apkUrl = "https://echomusic.fun"
+    val apkUrl = "https://github.com/Dande-at-work/Dande-Music/releases"
     val intent = Intent(Intent.ACTION_VIEW, apkUrl.toUri())
 
     val flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
@@ -39,7 +39,7 @@ object UpdateNotificationHelper {
 
     val notif =
       NotificationCompat.Builder(context, CHANNEL_ID)
-        .setSmallIcon(R.drawable.ic_launcher_nobg)
+        .setSmallIcon(R.drawable.ic_notification)
         .setContentTitle(context.getString(R.string.update_available_title))
         .setContentText(versionName)
         .setContentIntent(pending)

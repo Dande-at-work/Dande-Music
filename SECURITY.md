@@ -24,7 +24,7 @@ We release patches for security vulnerabilities in the following versions:
 If you discover a security vulnerability in Dande Music, please report it responsibly:
 
 1. **Do NOT** create a public GitHub issue
-2. Email us at: [security@echomusic.fun](mailto:security@echomusic.fun)
+2. Email us at: [https://github.com/Dande-at-work/Dande-Music/security](mailto:https://github.com/Dande-at-work/Dande-Music/security)
 3. Include the following information:
    - Description of the vulnerability
    - Steps to reproduce
@@ -73,7 +73,7 @@ Dande Music is committed to user privacy:
 
 For security-related questions or to report vulnerabilities:
 
-- Email: [security@echomusic.fun](mailto:security@echomusic.fun)
+- Email: [https://github.com/Dande-at-work/Dande-Music/security](mailto:https://github.com/Dande-at-work/Dande-Music/security)
 - GitHub: Create a private security advisory
 
 Thank you for helping keep Dande Music secure!
