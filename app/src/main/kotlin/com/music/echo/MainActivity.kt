@@ -181,7 +181,10 @@ import echo.music.iad1tya.db.entities.SearchHistory
 import echo.music.iad1tya.echomusic.UpdateNotificationHelper
 import echo.music.iad1tya.echomusic.updater.checkForUpdate
 import echo.music.iad1tya.echomusic.updater.getAutoUpdateCheckSetting
+import echo.music.iad1tya.echomusic.updater.getLastPromptedUpdateVersion
 import echo.music.iad1tya.echomusic.updater.getUpdateNotificationsSetting
+import echo.music.iad1tya.echomusic.updater.isVersionGreater
+import echo.music.iad1tya.echomusic.updater.saveLastPromptedUpdateVersion
 import echo.music.iad1tya.echomusic.updater.saveUpdateAvailableState
 import echo.music.iad1tya.extensions.toEnum
 import echo.music.iad1tya.models.toMediaMetadata
@@ -525,16 +528,22 @@ class MainActivity : ComponentActivity() {
             )
             saveUpdateAvailableState(context, isAvailable)
 
-            if (isAvailable) {
+            val savedVersion = getLastPromptedUpdateVersion(context)
+            val isStrictlyNewerThanInstalled = isVersionGreater(latestVersion, currentVersion)
+            val isStrictlyNewerThanSaved =
+              savedVersion.isBlank() || isVersionGreater(latestVersion, savedVersion)
+
+            if (isAvailable && isStrictlyNewerThanInstalled && isStrictlyNewerThanSaved) {
               availableUpdateVersion = latestVersion
               availableUpdateChangelog = changelog
               availableUpdateDescription = description
               showUpdateDialog = true
-            }
+              saveLastPromptedUpdateVersion(context, latestVersion)
 
-            if (isAvailable && getUpdateNotificationsSetting(context)) {
-              Log.d("UpdateCheck", "Posting update notification for $latestVersion")
-              UpdateNotificationHelper.showUpdateNotification(context, latestVersion)
+              if (getUpdateNotificationsSetting(context)) {
+                Log.d("UpdateCheck", "Posting update notification for $latestVersion")
+                UpdateNotificationHelper.showUpdateNotification(context, latestVersion)
+              }
             }
           },
           onError = { Log.e("UpdateCheck", "Startup check failed") }

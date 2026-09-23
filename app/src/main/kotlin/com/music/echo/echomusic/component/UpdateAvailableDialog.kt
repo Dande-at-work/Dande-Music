@@ -6,6 +6,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,6 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import echo.music.iad1tya.R
 import echo.music.iad1tya.echomusic.updater.ChangelogSection
+import echo.music.iad1tya.echomusic.updater.saveLastPromptedUpdateVersion
 import echo.music.iad1tya.ui.utils.parseMarkdownToSections
 import echo.music.iad1tya.ui.utils.parseSimpleMarkdown
 import racra.compose.smooth_corner_rect_library.AbsoluteSmoothCornerShape
@@ -37,6 +39,12 @@ fun UpdateAvailableDialog(
   onDismiss: () -> Unit
 ) {
   val context = LocalContext.current
+
+  LaunchedEffect(version) {
+    if (version.isNotBlank()) {
+      saveLastPromptedUpdateVersion(context, version)
+    }
+  }
   val cardShape =
     AbsoluteSmoothCornerShape(
       cornerRadiusTL = 30.dp,

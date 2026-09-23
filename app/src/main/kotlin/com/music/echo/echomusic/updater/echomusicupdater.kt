@@ -341,7 +341,7 @@ fun UpdateScreen(navController: NavHostController) {
                     } else {
                       val urlToDownload =
                         currentStatus.apkUrl
-                          ?: "https://github.com/EchoMusicApp/Echo-Music/releases/download/${currentStatus.version}/echomusic.apk"
+                          ?: "https://github.com/Dande-at-work/Dande-Music/releases/download/${currentStatus.version}/Dande.Music.apk"
 
                       val constraints =
                         Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
@@ -632,11 +632,20 @@ private fun formatGitHubDate(githubDate: String): String =
   }
 
 fun isNewerVersion(latestVersion: String, currentVersion: String): Boolean {
-  val latestVersionClean = latestVersion.removePrefix("b").removePrefix("v")
-  val currentVersionClean = currentVersion.removePrefix("b").removePrefix("v")
+  if (latestVersion.isBlank()) return false
+  if (currentVersion.isBlank()) return true
 
-  val latestParts = latestVersionClean.split(".").map { it.toIntOrNull() ?: 0 }
-  val currentParts = currentVersionClean.split(".").map { it.toIntOrNull() ?: 0 }
+  val latestVersionClean =
+    latestVersion.trim().removePrefix("b").removePrefix("v").removePrefix("B").removePrefix("V")
+  val currentVersionClean =
+    currentVersion.trim().removePrefix("b").removePrefix("v").removePrefix("B").removePrefix("V")
+
+  val latestParts = latestVersionClean.split(".").map { part ->
+    part.takeWhile { it.isDigit() }.toIntOrNull() ?: 0
+  }
+  val currentParts = currentVersionClean.split(".").map { part ->
+    part.takeWhile { it.isDigit() }.toIntOrNull() ?: 0
+  }
 
   for (i in 0 until maxOf(latestParts.size, currentParts.size)) {
     val latest = latestParts.getOrElse(i) { 0 }
@@ -648,13 +657,52 @@ fun isNewerVersion(latestVersion: String, currentVersion: String): Boolean {
   }
 
   if (latestVersionClean == currentVersionClean) {
-    val latestIsBeta = latestVersion.startsWith("b")
-    val currentIsBeta = currentVersion.startsWith("b")
+    val latestIsBeta = latestVersion.startsWith("b", ignoreCase = true)
+    val currentIsBeta = currentVersion.startsWith("b", ignoreCase = true)
 
     if (currentIsBeta && !latestIsBeta) return true
   }
 
   return false
+}
+
+fun isVersionGreater(remoteVersion: String, baselineVersion: String): Boolean {
+  if (remoteVersion.isBlank()) return false
+  if (baselineVersion.isBlank()) return true
+
+  val remoteClean =
+    remoteVersion.trim().removePrefix("b").removePrefix("v").removePrefix("B").removePrefix("V")
+  val baselineClean =
+    baselineVersion.trim().removePrefix("b").removePrefix("v").removePrefix("B").removePrefix("V")
+
+  val remoteCode = remoteClean.toIntOrNull()
+  val baselineCode = baselineClean.toIntOrNull()
+  if (remoteCode != null && baselineCode != null && !remoteClean.contains(".") && !baselineClean.contains(".")) {
+    return remoteCode > baselineCode
+  }
+
+  return isNewerVersion(remoteVersion, baselineVersion)
+}
+
+const val KEY_LAST_PROMPTED_UPDATE_VERSION = "last_prompted_update_version"
+const val KEY_LAST_PROMPTED_VERSION_CODE = "last_prompted_version_code"
+
+fun getLastPromptedUpdateVersion(context: Context): String {
+  val sharedPrefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+  val versionName = sharedPrefs.getString(KEY_LAST_PROMPTED_UPDATE_VERSION, "") ?: ""
+  if (versionName.isNotEmpty()) return versionName
+  val versionCode = sharedPrefs.getInt(KEY_LAST_PROMPTED_VERSION_CODE, -1)
+  return if (versionCode != -1) versionCode.toString() else ""
+}
+
+fun saveLastPromptedUpdateVersion(context: Context, version: String) {
+  val sharedPrefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+  val editor = sharedPrefs.edit()
+  editor.putString(KEY_LAST_PROMPTED_UPDATE_VERSION, version)
+  version.trim().removePrefix("b").removePrefix("v").removePrefix("B").removePrefix("V").toIntOrNull()?.let { code ->
+    editor.putInt(KEY_LAST_PROMPTED_VERSION_CODE, code)
+  }
+  editor.apply()
 }
 
 suspend fun checkForUpdate(
@@ -674,15 +722,13 @@ suspend fun checkForUpdate(
 ) {
   withContext(Dispatchers.IO) {
     try {
-      val url = URL("https://api.github.com/repos/EchoMusicApp/Echo-Music/releases/latest")
+      val url = URL("https://api.github.com/repos/Dande-at-work/Dande-Music/releases/latest")
       val json = url.openStream().bufferedReader().use { it.readText() }
       val targetRelease = JSONObject(json)
 
       val currentVersion = BuildConfig.VERSION_NAME
       val targetTagName = targetRelease.getString("tag_name")
-      val currentClean = currentVersion.removePrefix("b").removePrefix("v").trim()
-      val targetClean = targetTagName.removePrefix("b").removePrefix("v").trim()
-      val shouldShow = currentClean != targetClean
+      val shouldShow = isVersionGreater(targetTagName, currentVersion)
 
       if (shouldShow) {
         val tagWithPrefix = targetRelease.getString("tag_name")
@@ -694,7 +740,7 @@ suspend fun checkForUpdate(
         try {
           val changelogUrl =
             URL(
-              "https://github.com/EchoMusicApp/Echo-Music/releases/download/$tagWithPrefix/changelog.json"
+              "https://github.com/Dande-at-work/Dande-Music/releases/download/$tagWithPrefix/changelog.json"
             )
           val changelogJson = changelogUrl.openStream().bufferedReader().use { it.readText() }
           val changelogData = JSONObject(changelogJson)
@@ -814,7 +860,7 @@ suspend fun fetchChangelogForVersion(currentVersion: String): WhatsNewInfo? =
     try {
       val cleanCurrent = currentVersion.removePrefix("b").removePrefix("v").trim()
       val releasesJson =
-        openTimedStream("https://api.github.com/repos/EchoMusicApp/Echo-Music/releases")
+        openTimedStream("https://api.github.com/repos/Dande-at-work/Dande-Music/releases")
           .bufferedReader()
           .use { it.readText() }
       val releases = JSONArray(releasesJson)
@@ -836,7 +882,7 @@ suspend fun fetchChangelogForVersion(currentVersion: String): WhatsNewInfo? =
       try {
         val changelogJson =
           openTimedStream(
-              "https://github.com/EchoMusicApp/Echo-Music/releases/download/$tag/changelog.json"
+              "https://github.com/Dande-at-work/Dande-Music/releases/download/$tag/changelog.json"
             )
             .bufferedReader()
             .use { it.readText() }
