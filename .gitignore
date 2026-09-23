@@ -34,3 +34,6 @@ lastfm-empty/build/
 
 # Logs
 *.log
+
+# Attachments
+attachments/

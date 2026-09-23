@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/Echo-new.png" alt="Dande Music Logo" width="120"/>
+  <img src="assets/Dande-Music-Logo.png" alt="Dande Music Logo" width="120"/>
 
   <h1>Dande Music</h1>
 
