@@ -128,7 +128,9 @@ import echo.music.iad1tya.playback.queues.YouTubeQueue
 import echo.music.iad1tya.ui.component.AlbumGridItem
 import echo.music.iad1tya.ui.component.ArtistGridItem
 import echo.music.iad1tya.ui.component.ChipsRow
+import echo.music.iad1tya.ui.component.DynamicHomeBanner
 import echo.music.iad1tya.ui.component.LocalBottomSheetPageState
+import echo.music.iad1tya.ui.component.rememberDynamicHomeBannerState
 import echo.music.iad1tya.ui.component.LocalMenuState
 import echo.music.iad1tya.ui.component.NavigationTitle
 import echo.music.iad1tya.ui.component.RandomizeGridItem
@@ -622,6 +624,7 @@ fun HomeScreen(
   }
 
   val foundInSettings = stringResource(R.string.found_in_settings_content)
+  val bannerState = rememberDynamicHomeBannerState()
 
   LaunchedEffect(scrollToTop?.value) {
     if (scrollToTop?.value == true) {
@@ -912,6 +915,16 @@ fun HomeScreen(
         state = lazylistState,
         contentPadding = LocalPlayerAwareWindowInsets.current.asPaddingValues()
       ) {
+        if (bannerState.isVisible) {
+          item(key = "home_top_banner") {
+            DynamicHomeBanner(
+              title = bannerState.title,
+              description = bannerState.description,
+              modifier = Modifier.animateItem()
+            )
+          }
+        }
+
         item {
           ChipsRow(
             chips =

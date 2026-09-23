@@ -1,51 +1,13 @@
 {
   "project_info": {
-    "project_number": "887842405081",
-    "project_id": "echo-aab3b",
-    "storage_bucket": "echo-aab3b.firebasestorage.app"
+    "project_number": "191292565721",
+    "project_id": "dande-music",
+    "storage_bucket": "dande-music.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:887842405081:android:2be388a7f6a02d941a5cc8",
-        "android_client_info": {
-          "package_name": "echo.music.iad1tya"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCvXEL8c5TOPmYUo33ghC7Cf64qYUGWfZg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:887842405081:android:2be388a7f6a02d941a5cc8",
-        "android_client_info": {
-          "package_name": "echo.music.iad1tya.debug"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCvXEL8c5TOPmYUo33ghC7Cf64qYUGWfZg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:887842405081:android:2be388a7f6a02d941a5cc8",
+        "mobilesdk_app_id": "1:191292565721:android:7eb075b6ea8320360176c8",
         "android_client_info": {
           "package_name": "com.music.dande"
         }
@@ -53,26 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCvXEL8c5TOPmYUo33ghC7Cf64qYUGWfZg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:887842405081:android:2be388a7f6a02d941a5cc8",
-        "android_client_info": {
-          "package_name": "com.music.dande.debug"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCvXEL8c5TOPmYUo33ghC7Cf64qYUGWfZg"
+          "current_key": "AIzaSyA-gPTWPtgqm0RHyZFozubHSgUZDWPpL1w"
         }
       ],
       "services": {
