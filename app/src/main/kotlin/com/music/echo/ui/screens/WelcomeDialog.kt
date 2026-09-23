@@ -21,8 +21,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.painter.Painter
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -36,6 +40,8 @@ import echo.music.iad1tya.R
 @Composable
 fun WelcomeDialog(onDismissRequest: () -> Unit) {
   val uriHandler = LocalUriHandler.current
+  val clipboardManager = LocalClipboardManager.current
+  val context = LocalContext.current
 
   Dialog(
     onDismissRequest = onDismissRequest,
@@ -61,22 +67,18 @@ fun WelcomeDialog(onDismissRequest: () -> Unit) {
           WelcomeActionRow(
             icon = painterResource(R.drawable.github),
             title = "GitHub",
-            subtitle = "Dande-at-work/Dande-Music",
-            onClick = { uriHandler.openUri("https://github.com/Dande-at-work/Dande-Music") }
+            subtitle = "Dande-at-work",
+            onClick = { uriHandler.openUri("https://github.com/Dande-at-work") }
           )
           WelcomeDivider()
           WelcomeActionRow(
-            icon = painterResource(R.drawable.ic_x_new),
-            title = "X (Twitter)",
-            subtitle = "@your_username",
-            onClick = { uriHandler.openUri("https://x.com/your_username") }
-          )
-          WelcomeDivider()
-          WelcomeActionRow(
-            icon = painterResource(R.drawable.ic_instagram_new),
-            title = "Instagram",
-            subtitle = "@your_username",
-            onClick = { uriHandler.openUri("https://instagram.com/your_username") }
+            icon = painterResource(R.drawable.ic_discord_new),
+            title = "Discord",
+            subtitle = "dande.exe",
+            onClick = {
+              clipboardManager.setText(AnnotatedString("dande.exe"))
+              Toast.makeText(context, "Copied dande.exe to clipboard", Toast.LENGTH_SHORT).show()
+            }
           )
         }
 

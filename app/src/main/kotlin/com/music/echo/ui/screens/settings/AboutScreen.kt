@@ -29,10 +29,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.luminance
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -165,6 +168,7 @@ fun AboutScreen(
       }
 
       item {
+        val clipboardManager = LocalClipboardManager.current
         Material3SettingsGroup(
           title = "Social Links",
           items =
@@ -172,20 +176,17 @@ fun AboutScreen(
               Material3SettingsItem(
                 icon = painterResource(R.drawable.github),
                 title = { Text("GitHub") },
-                description = { Text("Dande-at-work/Dande-Music") },
-                onClick = { uriHandler.openUri("https://github.com/Dande-at-work/Dande-Music") }
+                description = { Text("Dande-at-work") },
+                onClick = { uriHandler.openUri("https://github.com/Dande-at-work") }
               ),
               Material3SettingsItem(
-                icon = painterResource(R.drawable.ic_x_new),
-                title = { Text("X (Twitter)") },
-                description = { Text("@your_username") },
-                onClick = { uriHandler.openUri("https://x.com/your_username") }
-              ),
-              Material3SettingsItem(
-                icon = painterResource(R.drawable.ic_instagram_new),
-                title = { Text("Instagram") },
-                description = { Text("@your_username") },
-                onClick = { uriHandler.openUri("https://instagram.com/your_username") }
+                icon = painterResource(R.drawable.ic_discord_new),
+                title = { Text("Discord") },
+                description = { Text("dande.exe") },
+                onClick = {
+                  clipboardManager.setText(AnnotatedString("dande.exe"))
+                  Toast.makeText(context, "Copied dande.exe to clipboard", Toast.LENGTH_SHORT).show()
+                }
               )
             )
         )
